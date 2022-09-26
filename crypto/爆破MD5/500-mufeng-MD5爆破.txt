@@ -1,0 +1,4 @@
+data='Boom_MD5****'
+flag=MD5(data)
+print(flag)
+#0618ac93d4631df725bceea74d0*****
