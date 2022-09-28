@@ -1,7 +1,8 @@
 bp.burp
 /project/*
-/ezjava/.idea/
-/web/ezjava/ezjvav_re/
-/web/ezjava/target/
-/web/ezjava/.idea/
-/.idea/
+/ezjava/.idea
+/web/ezjava/ezjvav_re
+/web/ezjava/target
+/web/ezjava/.idea
+/.idea
+/todo
