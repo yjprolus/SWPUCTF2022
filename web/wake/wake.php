@@ -8,7 +8,7 @@ class A
     {
         if ($this->are_you_a_hacker == 'yesyesyes')
         {
-            echo getenv('FLAG');
+            echo "flag";
         } else {
             echo 'Night Night, Makka Pakka';
         }
