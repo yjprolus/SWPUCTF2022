@@ -1,68 +1,36 @@
-# uncompyle6 version 3.8.0
-# Python bytecode 3.7.0 (3394)
-# Decompiled from: Python 3.8.6 (tags/v3.8.6:db45529, Sep 23 2020, 15:52:53) [MSC v.1927 64 bit (AMD64)]
-# Embedded file name: rc4.py
-# Compiled at: 2022-10-01 13:23:45
-# Size of source mod 2**32: 1065 bytes
+sBox = [121, 131, 252, 194, 61, 219, 32, 51, 88, 47, 224, 190, 249, 55, 110, 164, 85, 75, 234, 95, 18, 107, 200, 2, 205, 209, 214, 186, 38, 72, 181, 206, 165, 207, 185, 22, 91, 133, 79, 141, 212, 105, 255, 78, 58, 10, 195, 71, 28, 64, 166, 189, 184, 201, 41, 191, 30, 60, 170, 134, 45, 0, 162, 42, 68, 62, 213, 25, 100, 241, 167, 136, 129, 8, 89, 108, 40, 111, 151, 84, 5, 21, 171, 132, 231, 239, 210, 46, 101, 147, 128, 122, 124, 160, 76, 163, 66, 35, 187, 52, 182, 19, 179, 227, 54, 97, 230, 153, 253, 43, 192, 23, 15, 154, 130, 80, 217, 172, 59, 243, 226, 48, 27, 157, 36, 221, 44, 202, 193,
+        144, 156, 140, 246, 232, 115, 65, 26, 236, 11, 148, 228, 250, 125, 251, 247, 159, 242, 173, 248, 12, 177, 150, 218, 117, 16, 199, 14, 188, 240, 142, 143, 7, 29, 145, 81, 96, 235, 123, 98, 9, 222, 116, 204, 33, 238, 86, 155, 56, 180, 223, 17, 57, 127, 73, 87, 245, 74, 20, 208, 102, 92, 31, 49, 225, 39,        149, 112, 114, 69, 215, 237, 158, 77, 90, 104, 229, 197, 4, 146, 37, 198, 70, 152, 216, 118, 24, 244, 50, 233, 174, 196, 6, 138, 1, 34, 139, 113, 126, 94, 119, 183, 161, 3, 13, 254, 120, 135, 203, 175, 137, 168, 83, 220, 169, 178, 93, 99, 103, 63, 109, 53, 67, 82, 176, 211, 106]
+data = [115, 119, 112, 117, 123, 114, 99, 52,
+        95, 49, 115, 95, 101, 52, 115, 121, 125]
 
 
-def init(key):
-    sBox = []
-    index = 0
-    k = []
-    for i in range(256):
-        sBox.append(i)
-        k.append(ord(key[(i % len(key))]))
-
-    for i in range(256):
-        index = (index + sBox[i] + k[i]) % 256
-        sBox[i], sBox[index] = sBox[index], sBox[i]
-
-    return sBox
-
-
-def rc4_crypt(data, sBox):
+def rc4_crypt(data0, sBox):
     i = 0
     j = 0
     t = 0
-    for k in range(len(data)):
+    for k in range(len(data0)):
         i = (i + 1) % 256
         j = (j + sBox[i]) % 256
         sBox[i], sBox[j] = sBox[j], sBox[i]
         t = (sBox[i] + sBox[j]) % 256
-        data[k] ^= sBox[t]
-
-    return data
-
-
-def data_to_str(data):
-    str = ''
-    for i in range(len(data)):
-        str += chr(data[i])
-
-    return str
+        data0[k] ^= sBox[t]
+    return data0
 
 
 def str_to_data(str):
     d = []
     for i in range(len(str)):
         d.append(ord(str[i]))
-
     return d
 
 
-data = [
- 115, 119, 112, 117, 123, 114, 99, 52, 95, 49, 115, 95, 101, 52, 115, 121, 125]
-# flag = input('请输入flag：')
-flag="nssctf{dfadfdasf}"
-key = 'wllm'
-sBox = init(key)
-print(sBox)
+flag = "swpu{dfadfdasudf}"
 flag = str_to_data(flag)
 print(flag)
+print("----------------")
 res = rc4_crypt(flag, sBox)
-# print(res)
-# if flag == res:
-#     print('yes')
-# else:
-#     print('wrong')
+print(res)
+print("----------------")
+if flag == res:
+    print(flag)
+    print(res)
