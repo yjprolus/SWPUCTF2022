@@ -160,6 +160,9 @@ hackbar 的 payload
 
 ## baby_ssrf
 
+源码泄露：
+
+`POST  url=http://sudo.cc/flag.php  -> swpu{werefgou-`
 
 ## do_not_wakeup
 
