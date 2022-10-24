@@ -1,4 +1,4 @@
-> 部分wp来自 [2022 SWPUCTF Web Writeup](https://mp.weixin.qq.com/s/7vOX5hgN90Sejdn6SwWz-A) ，没有完全按题目顺序写题解
+> 部分wp来自 [2022 SWPUCTF Web Writeup](https://mp.weixin.qq.com/s/7vOX5hgN90Sejdn6SwWz-A) ，[问谛居 - 欢迎做客问谛居 (wd-ljt.com)](https://www.wd-ljt.com/)，没有完全按题目顺序写题解
 
 # web
 
@@ -513,9 +513,25 @@ inject("http://175.24.172.136:30063/")
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/14ea27ecf06b49019c7e9a2298b84dfa.png)
 
+![1666632716647](image/README/1666632716647.png)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ef900b931c0b4f1e9785ff87889e3e3a.png)
+
+py爆破计算
+
+```python
+key='SWPU'
+flag=''
+result=[32,32,32,32,40,46,63,32,12,48,53,33,12,36,96,39,33,46,119,38,12,49,60,52,52,42]
+for i in range(len(result)):
+    flag+=chr(result[i]^ord(key[i%4]))
+print(flag)  # swpu{you_get_s0rry's_flag}
+```
+
 ## SUPX
 
 ## 64base
+
 
 ```python
 import base64
@@ -525,10 +541,8 @@ c = '2T3M3xJr3wqT4tfeuenTq9mNwBvOsdzJ1hQ='
 table = str.maketrans(a,b)
 d = c.translate(table)
 data = base64.b64decode(d)
-print(data)
+print(data) # swpu{Qud7y1DPCwB31ZUrH6ml}
 ```
-
-`swpu{Qud7y1DPCwB31ZUrH6ml}`
 
 ## swpu_easy_android
 
@@ -595,9 +609,17 @@ else:
 
 ## 善哉善哉
 
+010Editor打开，末尾有摩斯密码：
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/853c79633d9a418baed0322e9457e482.png)
+
+新佛曰解码得：施主，此次前来，不知有何贵干?
+
+再根据文件的属性中提示的MD5加密得到 `NSSCTF{7551772a99379ed0ae6015a470c1e335}`
+
 ## All in Base
 
-赛后听解出来的说，有个base92
+赛后听解出来的说，有个base92/45
 
 ## AES
 
