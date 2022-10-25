@@ -505,6 +505,8 @@ inject("http://175.24.172.136:30063/")
 
 # misc
 
+见出题人笔记：[SWPU NSS 2022 秋季招新赛 Misc 出题人笔记 - 问谛居](https://www.wd-ljt.com/post/1024/896.html)
+
 # reverse
 
 ## 一道简单的签到
