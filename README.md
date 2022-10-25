@@ -1,4 +1,6 @@
-> 部分wp来自 [2022 SWPUCTF Web Writeup](https://mp.weixin.qq.com/s/7vOX5hgN90Sejdn6SwWz-A) ，[问谛居 - 欢迎做客问谛居 (wd-ljt.com)](https://www.wd-ljt.com/)，没有完全按题目顺序写题解
+> 部分wp来自 [2022 SWPUCTF Web Writeup](https://mp.weixin.qq.com/s/7vOX5hgN90Sejdn6SwWz-A) ，[问谛居 - 欢迎做客问谛居 (wd-ljt.com)](https://www.wd-ljt.com/)，榜一大佬，Tony师傅，没有完全按题目顺序写题解
+
+GitHub版本：[yjprolus/SWPUCTF2022: SWPUCTF2022 wp (github.com)](https://github.com/yjprolus/SWPUCTF2022)
 
 # web
 
@@ -423,7 +425,7 @@ PD9waHAgZWNobyAiVGFvIjtldmFsKCRfUkVRVUVTVFswXSk7Pz4=
 
 ### flag2
 
-访问 /.git 得到
+访问 /.git 得到，/.svn是迷惑选项
 
 ### flag3
 
@@ -511,6 +513,8 @@ inject("http://175.24.172.136:30063/")
 
 ## xor
 
+ida打开定位到核心代码段：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/14ea27ecf06b49019c7e9a2298b84dfa.png)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/47c17d59347a4e10afd3d7a5ab4e0a56.png)
@@ -532,7 +536,6 @@ print(flag)  # swpu{you_get_s0rry's_flag}
 
 ## 64base
 
-
 ```python
 import base64
 a = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ+/'
@@ -546,7 +549,11 @@ print(data) # swpu{Qud7y1DPCwB31ZUrH6ml}
 
 ## swpu_easy_android
 
-反编译得到 check 类，在 idea 中运行测试得到密码为 `f53720bd5d9f07a8dc1028df48b8e1bb` ，登录进下一个界面。然后...
+反编译得到 check 类，在 idea 中运行测试得到密码为 `f53720bd5d9f07a8dc1028df48b8e1bb` ，登录进下一个界面。然后根据提示图片识图得到70个字符，10个一组分成7行组成一个迷宫
+
+![图源校赛榜一大佬](https://img-blog.csdnimg.cn/875916cf0b7542c7a73c3a9a2758c7c7.png)
+
+根据hint得到flag：`wllm{ssaaasaassdddwf537}`
 
 ## pyc大挑战
 
@@ -618,7 +625,6 @@ else:
 再根据文件的属性中提示的MD5加密得到 `NSSCTF{7551772a99379ed0ae6015a470c1e335}`
 
 ## All in Base
-
 
 赛后听解出来的说，有个base92/45
 
